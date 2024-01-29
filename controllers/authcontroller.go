@@ -11,6 +11,9 @@ import (
 	"github.com/LutfiEkaprima/Goproject/libraries"
 
 	"golang.org/x/crypto/bcrypt"
+
+	"os"
+	"path/filepath"
 )
 
 type UserInput struct {
@@ -168,5 +171,62 @@ func Register(w http.ResponseWriter, r *http.Request) {
 			temp.Execute(w, data)
 		}
 	}
+
+}
+func DownloadUAS(w http.ResponseWriter, r *http.Request) {
+		// Path ke file yang akan diunduh
+		filePath := "./views/Jadwal_UAS_Reguler_PSIF_ITI.xlsx"
+
+		// Buka file
+		file, err := os.Open(filePath)
+		if err != nil {
+			http.Error(w, "File not found", http.StatusNotFound)
+			return
+		}
+		defer file.Close()
+
+		// Dapatkan informasi file
+		fileInfo, err := file.Stat()
+		if err != nil {
+			http.Error(w, "Unable to get file information", http.StatusInternalServerError)
+			return
+		}
+
+		// Set header untuk memicu unduhan
+		w.Header().Set("Content-Disposition", "attachment; filename="+filepath.Base(filePath))
+		w.Header().Set("Content-Type", "application/octet-stream")
+		//w.Header().Set("Content-Length", fileInfo.Size())
+
+		// Salin isi file ke response writer
+		http.ServeContent(w, r, fileInfo.Name(), fileInfo.ModTime(), file)
+}
+
+func DownloadUTS(w http.ResponseWriter, r *http.Request) {
+		// Path ke file yang akan diunduh
+		filePath := "./views/Jadwal_UTS_Reguler_PSIF_ITI.xlsx"
+
+		// Buka file
+		file, err := os.Open(filePath)
+		if err != nil {
+			http.Error(w, "File not found", http.StatusNotFound)
+			return
+		}
+		defer file.Close()
+
+		// Dapatkan informasi file
+		fileInfo, err := file.Stat()
+		if err != nil {
+			http.Error(w, "Unable to get file information", http.StatusInternalServerError)
+			return
+		}
+
+		// Set header untuk memicu unduhan
+		w.Header().Set("Content-Disposition", "attachment; filename="+filepath.Base(filePath))
+		w.Header().Set("Content-Type", "application/octet-stream")
+		//w.Header().Set("Content-Length", fileInfo.Size())
+
+		// Salin isi file ke response writer
+		http.ServeContent(w, r, fileInfo.Name(), fileInfo.ModTime(), file)
+	
 
 }

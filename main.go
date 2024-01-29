@@ -8,6 +8,8 @@ import (
 )
 
 func main() {
+	http.HandleFunc("/downloadUAS",authcontroller.DownloadUAS)
+	http.HandleFunc("/downloadUTS",authcontroller.DownloadUTS)
 	http.HandleFunc("/", authcontroller.Index)
 	http.HandleFunc("/login", authcontroller.Login)
 	http.HandleFunc("/logout", authcontroller.Login)

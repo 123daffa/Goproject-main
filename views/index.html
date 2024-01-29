@@ -17,7 +17,7 @@
         z-index: -1;
         overflow: hidden;
         width: 114%;
-        height: 130%;
+        height: 135%;
         background: black no-repeat center center/cover;
         margin:-14%;
       }
@@ -163,13 +163,31 @@
         z-index: 999;
         font-family: "Comic Sans MS", sans-serif;
       }
+      /* lINK DOWNLOAD JADWAL*/
+      
+      a.download-link {
+        display: inline-block ; /* Make the link inline-block */
+        margin: 10px auto; /* Center align the link */
+        text-decoration: none; /* Remove underline */
+        color: white; /* White text color */
+        background-color: #007bff; /* Blue background */
+        padding: 10px 15px; /* Padding around the text */
+        border-radius: 5px; /* Rounded corners */
+        font-family: 'Comic Sans MS', sans-serif;
+        transition: background-color 0.3s; /* Transition for background color */
+        
+      }
+
+      a.download-link:hover {
+        background-color: #f34814; /* Darker blue on hover */
+      }
     </style>
   </head>
   <body>
     <section id="video">
       <div class="overlay"></div>
       <video src="https://motionbgs.com/dl/hd/4099" loop muted autoplay></video>
-    </section>
+    </section>  
     <section>
       <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
         <div class="container">
@@ -316,6 +334,9 @@
         </tbody>
       </table>
     </center>
+
+      <a href="/downloadUAS" class="download-link" download>Download Jadwal UAS</a>
+      <a href="/downloadUTS" class="download-link" download>Download Jadwal UTS</a>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
